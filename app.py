@@ -36,3 +36,17 @@ def create_project(name):
             return new_project
         
     return {"message": "Course not found"}, 404
+
+@app.get("/course/<string:name>")
+def get_course(name):
+    for course in courses:
+        if course["name"] == name:
+            return course
+    return {"message": "Course not found"}, 404
+
+@app.get("/course/<string:name>/project")
+def get_project_in_course(name):
+    for course in courses:
+        if course["name"] == name:
+            return {"projects": course["projects"]}
+    return {"message": "Course not found"}, 404
