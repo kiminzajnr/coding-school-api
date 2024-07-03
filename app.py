@@ -41,7 +41,7 @@ def get_course(course_id):
     except KeyError:
         return {"message": "Course not found"}, 404
 
-@app.get("/course/<string:project_id")
+@app.get("/course/<string:project_id>")
 def get_project_in_course(project_id):
     try:
         return projects[project_id]
