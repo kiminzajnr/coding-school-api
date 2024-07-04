@@ -1,5 +1,4 @@
 import uuid
-
 from flask_smorest import Blueprint, abort
 
 from flask.views import MethodView
