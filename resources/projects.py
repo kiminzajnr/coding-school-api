@@ -14,6 +14,7 @@ blp = Blueprint("Projects", __name__, description="Operations on projects")
 
 @blp.route("/project/<string:project_id>")
 class Project(MethodView):
+    @blp.response(200, ProjectSchema)
     def get(self, project_id):
         try:
             return projects[project_id]
@@ -28,6 +29,7 @@ class Project(MethodView):
             abort(404, message="Project not found.")
 
     @blp.arguments(ProjectUpdateSchema)
+    @blp.response(200, ProjectSchema)
     def put(self, project_data, project_id):
         try:
             project = projects[project_id]
@@ -40,10 +42,12 @@ class Project(MethodView):
 
 @blp.route("/project")
 class ProjectList(MethodView):
+    @blp.response(200, ProjectSchema(many=True))
     def get(self):
         return {"project": list(projects.values())}
     
     @blp.arguments(ProjectSchema)
+    @blp.response(201, ProjectSchema)
     def post(self, project_data):
         project_id = uuid.uuid4().hex
         project = {**project_data, "id": project_id}
