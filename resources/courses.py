@@ -15,6 +15,7 @@ blp = Blueprint("Courses", __name__, description="Operations on courses")
 
 @blp.route("/course/<string:course_id>")
 class Course(MethodView):
+    @blp.response(200, CourseSchema)
     def get(self, course_id):
         try:
             return courses[course_id]
@@ -31,10 +32,12 @@ class Course(MethodView):
 
 @blp.route("/course")
 class CourseList(MethodView):
+    @blp.response(200, CourseSchema(many=True))
     def get(self):
         return {"courses": list(courses.values())}
     
     @blp.arguments(CourseSchema)
+    @blp.response(201, Course)
     def post(self, course_data):
         course_id = uuid.uuid4().hex
         course = {**course_data, "id": course_id}
