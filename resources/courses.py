@@ -7,6 +7,8 @@ from flask import request
 
 from db import courses
 
+from schemas import CourseSchema
+
 
 blp = Blueprint("Courses", __name__, description="Operations on courses")
 
@@ -32,8 +34,8 @@ class CourseList(MethodView):
     def get(self):
         return {"courses": list(courses.values())}
     
-    def post(self):
-        course_data = request.get_json()
+    @blp.arguments(CourseSchema)
+    def post(self, course_data):
         course_id = uuid.uuid4().hex
         course = {**course_data, "id": course_id}
         courses[course_id] = course
