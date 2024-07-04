@@ -7,6 +7,8 @@ from flask import request
 
 from db import projects
 
+from schemas import ProjectSchema
+
 blp = Blueprint("Projects", __name__, description="Operations on projects")
 
 
@@ -25,8 +27,8 @@ class Project(MethodView):
         except KeyError:
             abort(404, message="Project not found.")
 
-    def put(self, project_id):
-        project_data = request.get_json()
+    @blp.arguments(ProjectSchema)
+    def put(self, project_data, project_id):
         try:
             project = projects[project_id]
             project |= project_data
@@ -41,8 +43,8 @@ class ProjectList(MethodView):
     def get(self):
         return {"project": list(projects.values())}
     
-    def post(self):
-        project_data = request.get_json()
+    @blp.arguments(ProjectSchema)
+    def post(self, project_data):
         project_id = uuid.uuid4().hex
         project = {**project_data, "id": project_id}
         projects[project_id] = project
