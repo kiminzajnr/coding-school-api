@@ -7,7 +7,7 @@ from flask import request
 
 from db import projects
 
-blp = Blueprint("projects", __name__, description="Operations on projects")
+blp = Blueprint("Projects", __name__, description="Operations on projects")
 
 
 @blp.route("/project/<string:project_id>")
@@ -43,8 +43,6 @@ class ProjectList(MethodView):
     
     def post(self):
         project_data = request.get_json()
-        if project_data["course_id"] not in courses:
-            return {"message": "Course not found"}, 404
         project_id = uuid.uuid4().hex
         project = {**project_data, "id": project_id}
         projects[project_id] = project
