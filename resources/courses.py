@@ -8,7 +8,7 @@ from flask import request
 from db import courses
 
 
-blp = Blueprint("courses", __name__, description="Operations on courses")
+blp = Blueprint("Courses", __name__, description="Operations on courses")
 
 
 @blp.route("/course/<string:course_id>")
@@ -37,5 +37,5 @@ class CourseList(MethodView):
         course_id = uuid.uuid4().hex
         course = {**course_data, "id": course_id}
         courses[course_id] = course
-        
+
         return course, 201
