@@ -7,7 +7,7 @@ from flask import request
 
 from db import projects
 
-from schemas import ProjectSchema
+from schemas import ProjectSchema, ProjectUpdateSchema
 
 blp = Blueprint("Projects", __name__, description="Operations on projects")
 
@@ -27,7 +27,7 @@ class Project(MethodView):
         except KeyError:
             abort(404, message="Project not found.")
 
-    @blp.arguments(ProjectSchema)
+    @blp.arguments(ProjectUpdateSchema)
     def put(self, project_data, project_id):
         try:
             project = projects[project_id]
