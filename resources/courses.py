@@ -6,7 +6,6 @@ from flask.views import MethodView
 from flask import request
 
 from db import courses
-
 from schemas import CourseSchema
 
 
