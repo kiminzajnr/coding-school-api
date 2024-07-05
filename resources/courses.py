@@ -36,7 +36,7 @@ class CourseList(MethodView):
         return CourseModel.query.all()
     
     @blp.arguments(CourseSchema)
-    @blp.response(201, Course)
+    @blp.response(201, CourseSchema)
     def post(self, course_data):
         course = CourseModel(**course_data)
 
