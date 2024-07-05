@@ -18,17 +18,12 @@ blp = Blueprint("Courses", __name__, description="Operations on courses")
 class Course(MethodView):
     @blp.response(200, CourseSchema)
     def get(self, course_id):
-        try:
-            return courses[course_id]
-        except KeyError:
-            abort(404, message="Course not found.")
+        course = CourseModel.query.get_or_404(course_id)
+        return course
 
     def delete(self, course_id):
-        try:
-            del courses[course_id]
-            return {"message": "Course deleted."}
-        except KeyError:
-            abort(404, message="Course not found.")
+        course = CourseModel.query.get_or_404(course_id)
+        
 
 
 @blp.route("/course")
