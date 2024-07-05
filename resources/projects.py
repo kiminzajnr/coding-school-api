@@ -22,7 +22,9 @@ class Project(MethodView):
 
     def delete(self, project_id):
         project = ProjectModel.query.get_or_404(project_id)
-        raise NotImplementedError("Deleting a project is not implemented")
+        db.session.delete(project)
+        db.session.commit()
+        return {"message": "Project deleted."}
 
     @blp.arguments(ProjectUpdateSchema)
     @blp.response(200, ProjectSchema)
