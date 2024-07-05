@@ -17,6 +17,7 @@ class ProjectSchema(PlainProjectSchema):
 class ProjectUpdateSchema(Schema):
     name = fields.Str()
     description = fields.Str()
+    course_id = fields.Int()
 
 class CourseSchema(PlainCourseSchema):
     projects = fields.List(fields.Nested(PlainProjectSchema()), dump_only=True)
