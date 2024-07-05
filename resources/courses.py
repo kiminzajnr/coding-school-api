@@ -23,6 +23,9 @@ class Course(MethodView):
 
     def delete(self, course_id):
         course = CourseModel.query.get_or_404(course_id)
+        db.session.delete(course)
+        db.session.commit()
+        return {"message": "Course deleted"}, 200
         
 
 
