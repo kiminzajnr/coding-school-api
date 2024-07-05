@@ -3,7 +3,7 @@ from marshmallow import Schema, fields
 
 class PlainTaskSchema(Schema):
     id = fields.Str(dump_only=True)
-    name = fields.Str(required=True)
+    title = fields.Str(required=True)
     description = fields.Str(required=True)
 
 class PlainProjectSchema(Schema):
@@ -29,7 +29,7 @@ class ProjectUpdateSchema(Schema):
     course_id = fields.Int()
 
 class TaskUpdateSchema(Schema):
-    name = fields.Str()
+    title = fields.Str()
     description = fields.Str()
     project_id = fields.Int()
 
