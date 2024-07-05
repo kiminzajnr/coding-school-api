@@ -17,29 +17,17 @@ blp = Blueprint("Projects", __name__, description="Operations on projects")
 class Project(MethodView):
     @blp.response(200, ProjectSchema)
     def get(self, project_id):
-        try:
-            return projects[project_id]
-        except KeyError:
-            abort(404, message="Project not found.")
+        project = ProjectModel.query.get_or_404(project_id)
+        return project
 
     def delete(self, project_id):
-        try:
-            del projects[project_id]
-            return {"message": "Project deleted."}
-        except KeyError:
-            abort(404, message="Project not found.")
+        project = ProjectModel.query.get_or_404(project_id)
+        raise NotImplementedError("Deleting a project is not implemented")
 
     @blp.arguments(ProjectUpdateSchema)
     @blp.response(200, ProjectSchema)
     def put(self, project_data, project_id):
-        try:
-            project = projects[project_id]
-            project |= project_data
-
-            return project
-        
-        except KeyError:
-            abort(404, message="Project not found.")
+        project = ProjectModel.query.get_or_404(project_id)  
 
 @blp.route("/project")
 class ProjectList(MethodView):
