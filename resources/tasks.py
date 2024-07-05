@@ -60,3 +60,5 @@ class TaskList(MethodView):
             db.session.commit()
         except SQLAlchemyError:
             abort(500, message="An error occurred while inserting the task")
+
+        return task
