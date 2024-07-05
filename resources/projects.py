@@ -27,7 +27,17 @@ class Project(MethodView):
     @blp.arguments(ProjectUpdateSchema)
     @blp.response(200, ProjectSchema)
     def put(self, project_data, project_id):
-        project = ProjectModel.query.get_or_404(project_id)  
+        project = ProjectModel.query.get(project_id)
+        if project:
+            project.name = project_data["name"]
+            project.description = project_data["description"]
+        else:
+            project = ProjectModel(id=project_id, **project_data)
+        
+        db.session.add(project)
+        db.session.commit()
+
+        return project
 
 @blp.route("/project")
 class ProjectList(MethodView):
