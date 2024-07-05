@@ -9,6 +9,6 @@ class ProjectModel(db.Model):
     description = db.Column(db.String(1000), nullable=False)
 
     course_id = db.Column(
-        db.Integer, db.ForeignKey("course.id"), unique=False, nullable=False
+        db.Integer, db.ForeignKey("courses.id"), unique=False, nullable=False
     )
-    course = db.relationship("CourseModel", back_populates="projects")
+    courses = db.relationship("CourseModel", back_populates="projects")
