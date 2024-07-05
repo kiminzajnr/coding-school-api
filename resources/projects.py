@@ -15,7 +15,7 @@ from schemas import ProjectSchema, ProjectUpdateSchema
 blp = Blueprint("Projects", __name__, description="Operations on projects")
 
 
-@blp.route("/project/<string:project_id>")
+@blp.route("/project/<int:project_id>")
 class Project(MethodView):
     @blp.response(200, ProjectSchema)
     def get(self, project_id):
