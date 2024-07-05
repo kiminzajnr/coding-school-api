@@ -10,6 +10,8 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from schemas import ProjectSchema, ProjectUpdateSchema
 
+
+
 blp = Blueprint("Projects", __name__, description="Operations on projects")
 
 
