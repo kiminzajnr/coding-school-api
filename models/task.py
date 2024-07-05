@@ -12,4 +12,4 @@ class TaskModel(db.Model):
         db.Integer, db.ForeignKey("projects.id"), unique=False, nullable=False
     )
 
-    projects = db.relationship("ProjectModel", back_populates="tasks")
+    project = db.relationship("ProjectModel", back_populates="tasks")
