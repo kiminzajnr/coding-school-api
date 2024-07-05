@@ -18,6 +18,7 @@ class PlainCourseSchema(Schema):
 class ProjectSchema(PlainProjectSchema):
     course_id = fields.Int(required=True, load_only=True)
     course = fields.Nested(PlainCourseSchema(), dump_only=True)
+    tasks = fields.List(fields.Nested(PlainTaskSchema()), dump_only=True)
 
 class TaskSchema(PlainTaskSchema):
     project_id = fields.Int(required=True, load_only=True)
