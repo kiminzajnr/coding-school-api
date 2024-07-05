@@ -24,7 +24,7 @@ class Project(MethodView):
         project = ProjectModel.query.get_or_404(project_id)
         db.session.delete(project)
         db.session.commit()
-        return {"message": "Project deleted."}
+        return {"message": "Project deleted."}, 200
 
     @blp.arguments(ProjectUpdateSchema)
     @blp.response(200, ProjectSchema)
