@@ -12,3 +12,5 @@ class ProjectModel(db.Model):
         db.Integer, db.ForeignKey("courses.id"), unique=False, nullable=False
     )
     courses = db.relationship("CourseModel", back_populates="projects")
+
+    tasks = db.relationship("TaskModel", back_populates="projects", lazy="dynamic", cascade="all, delete")
