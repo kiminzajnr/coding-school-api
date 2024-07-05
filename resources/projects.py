@@ -43,7 +43,7 @@ class Project(MethodView):
 class ProjectList(MethodView):
     @blp.response(200, ProjectSchema(many=True))
     def get(self):
-        return {"project": list(projects.values())}
+        return ProjectModel.query.all()
     
     @blp.arguments(ProjectSchema)
     @blp.response(201, ProjectSchema)
