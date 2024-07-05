@@ -1,10 +1,12 @@
-import uuid
 from flask_smorest import Blueprint, abort
 
 from flask.views import MethodView
-from flask import request
 
-from db import projects
+from models import ProjectModel
+
+from db import db
+
+from sqlalchemy.exc import SQLAlchemyError
 
 from schemas import ProjectSchema, ProjectUpdateSchema
 
@@ -48,8 +50,12 @@ class ProjectList(MethodView):
     @blp.arguments(ProjectSchema)
     @blp.response(201, ProjectSchema)
     def post(self, project_data):
-        project_id = uuid.uuid4().hex
-        project = {**project_data, "id": project_id}
-        projects[project_id] = project
+        project = ProjectModel(**project_data)
+
+        try:
+            db.session.add(project)
+            db.session.commit()
+        except SQLAlchemyError:
+            abort(500, message="An error occurred while inserting the project")
 
         return project
