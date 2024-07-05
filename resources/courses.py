@@ -30,7 +30,7 @@ class Course(MethodView):
 class CourseList(MethodView):
     @blp.response(200, CourseSchema(many=True))
     def get(self):
-        return {"courses": list(courses.values())}
+        return CourseModel.query.all()
     
     @blp.arguments(CourseSchema)
     @blp.response(201, Course)
