@@ -1,11 +1,13 @@
-import uuid
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
 from flask_smorest import Blueprint, abort
 
 from flask.views import MethodView
-from flask import request
 
-from db import courses
+from db import db
+
+from models import CourseModel
+
 from schemas import CourseSchema
 
 
@@ -38,8 +40,17 @@ class CourseList(MethodView):
     @blp.arguments(CourseSchema)
     @blp.response(201, Course)
     def post(self, course_data):
-        course_id = uuid.uuid4().hex
-        course = {**course_data, "id": course_id}
-        courses[course_id] = course
+        course = CourseModel(**course_data)
+
+        try:
+            db.session.add(course)
+            db.session.commit()
+        except IntegrityError:
+            abort(
+                404,
+                message="A course with that name already exists.",
+            )
+        except SQLAlchemyError:
+            abort(500, message="An error occurred creating the course.")
 
         return course, 201
