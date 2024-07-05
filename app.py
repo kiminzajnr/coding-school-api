@@ -8,6 +8,7 @@ from db import db
 
 from resources.courses import blp as CourseBlueprint
 from resources.projects import blp as ProjectBlueprint
+from resources.tasks import blp as TaskBlueprint
 
 
 def create_app(db_url=None):
@@ -31,5 +32,6 @@ def create_app(db_url=None):
 
     api.register_blueprint(CourseBlueprint)
     api.register_blueprint(ProjectBlueprint)
+    api.register_blueprint(TaskBlueprint)
 
     return app
