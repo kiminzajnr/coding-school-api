@@ -2,7 +2,7 @@ from flask.views import MethodView
 
 from flask_smorest import Blueprint, abort
 
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, get_jwt, jwt_required
 
 from passlib.hash import pbkdf2_sha256
 
@@ -49,12 +49,22 @@ class UserLogin(MethodView):
 @blp.route("/user/<int:user_id>")
 class user(MethodView):
     """For testing purpose, disable in production"""
+    @jwt_required()
     @blp.response(200, UserSchema)
     def get(self, user_id):
+        jwt = get_jwt()
+        if not jwt.get("is_admin"):
+            abort(401, message="Admin privilege required!")
+            
         user = UserModel.query.get_or_404(user_id)
         return user
     
+    @jwt_required()
     def delete(self, user_id):
+        jwt = get_jwt()
+        if not jwt.get("is_admin"):
+            abort(401, message="Admin privilege required!")
+
         user = UserModel.query.get_or_404(user_id)
         db.session.delete(user)
         db.session.commit()
