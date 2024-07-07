@@ -7,6 +7,7 @@ from flask_smorest import Api
 from flask_jwt_extended import JWTManager
 
 from db import db
+from blocklist import BLOCKLIST
 
 from resources.courses import blp as CourseBlueprint
 from resources.projects import blp as ProjectBlueprint
@@ -65,6 +66,19 @@ def create_app(db_url=None):
                     "description": "Request does not contain an access token.",
                     "error": "authorizaton_required",
                 }
+            ),
+            401,
+        )
+    
+    @jwt.token_in_blocklist_loader
+    def check_if_token_in_blocklist(jwt_header, jwt_payload):
+        return jwt_payload["jti"] in BLOCKLIST
+    
+    @jwt.revoked_token_loader
+    def revoked_token_callback(jwt_header, jwt_payload):
+        return (
+            jsonify(
+                {"descripton": "The token has been revoked.", "error": "token_revoked"}
             ),
             401,
         )
