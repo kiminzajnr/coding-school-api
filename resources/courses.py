@@ -1,5 +1,7 @@
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
+from flask_jwt_extended import jwt_required
+
 from flask_smorest import Blueprint, abort
 
 from flask.views import MethodView
@@ -21,6 +23,7 @@ class Course(MethodView):
         course = CourseModel.query.get_or_404(course_id)
         return course
 
+    @jwt_required()
     def delete(self, course_id):
         course = CourseModel.query.get_or_404(course_id)
         db.session.delete(course)
@@ -35,6 +38,7 @@ class CourseList(MethodView):
     def get(self):
         return CourseModel.query.all()
     
+    @jwt_required()
     @blp.arguments(CourseSchema)
     @blp.response(201, CourseSchema)
     def post(self, course_data):
