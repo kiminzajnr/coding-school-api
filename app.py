@@ -4,6 +4,8 @@ from flask import Flask
 
 from flask_smorest import Api
 
+from flask_jwt_extended import JWTManager
+
 from db import db
 
 from resources.courses import blp as CourseBlueprint
@@ -26,6 +28,9 @@ def create_app(db_url=None):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
     api = Api(app)
+
+    app.config["JWT_SECRET_KEY"] = "182742586945152746528600758973297600936"
+    jwt = JWTManager(app)
 
     with app.app_context():
         db.create_all()
