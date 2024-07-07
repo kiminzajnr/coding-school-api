@@ -29,7 +29,7 @@ class UserRegister(MethodView):
         return {"message": "User created successfully."}, 201
     
 
-@blp.route("/register/<int:user_id>")
+@blp.route("/user/<int:user_id>")
 class user(MethodView):
     """For testing purpose, disable in production"""
     @blp.response(200, UserSchema)
