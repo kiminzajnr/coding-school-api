@@ -1,6 +1,6 @@
 from flask_smorest import Blueprint, abort
-
 from flask.views import MethodView
+from flask_jwt_extended import jwt_required
 
 from models import ProjectModel
 
@@ -22,12 +22,14 @@ class Project(MethodView):
         project = ProjectModel.query.get_or_404(project_id)
         return project
 
+    @jwt_required()
     def delete(self, project_id):
         project = ProjectModel.query.get_or_404(project_id)
         db.session.delete(project)
         db.session.commit()
         return {"message": "Project deleted."}, 200
 
+    @jwt_required()
     @blp.arguments(ProjectUpdateSchema)
     @blp.response(200, ProjectSchema)
     def put(self, project_data, project_id):
@@ -49,6 +51,7 @@ class ProjectList(MethodView):
     def get(self):
         return ProjectModel.query.all()
     
+    @jwt_required()
     @blp.arguments(ProjectSchema)
     @blp.response(201, ProjectSchema)
     def post(self, project_data):
