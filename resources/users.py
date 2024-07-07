@@ -9,6 +9,7 @@ from passlib.hash import pbkdf2_sha256
 from schemas import UserSchema
 from models import UserModel
 from db import db
+from blocklist import BLOCKLIST
 
 
 blp = Blueprint("Users", "users", description="Operations on users.")
@@ -44,6 +45,14 @@ class UserLogin(MethodView):
             return {"access_token": access_token}, 200
         
         abort(401, message="Invalid credentials.")
+
+@blp.route("/logout")
+class UserLogout(MethodView):
+    @jwt_required()
+    def post(self):
+        jti = get_jwt()["jti"]
+        BLOCKLIST.add(jti)
+        return {"message": "Successfully logout out"}, 200
     
 
 @blp.route("/user/<int:user_id>")
@@ -55,7 +64,7 @@ class user(MethodView):
         jwt = get_jwt()
         if not jwt.get("is_admin"):
             abort(401, message="Admin privilege required!")
-            
+
         user = UserModel.query.get_or_404(user_id)
         return user
     
