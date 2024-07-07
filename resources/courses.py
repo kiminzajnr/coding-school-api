@@ -1,5 +1,7 @@
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 
+from flask_jwt_extended import get_jwt
+
 from flask_jwt_extended import jwt_required
 
 from flask_smorest import Blueprint, abort
@@ -25,6 +27,9 @@ class Course(MethodView):
 
     @jwt_required()
     def delete(self, course_id):
+        jwt = get_jwt()
+        if not jwt.get("is_admin"):
+            abort(401, message="Admin privilege required!")
         course = CourseModel.query.get_or_404(course_id)
         db.session.delete(course)
         db.session.commit()
