@@ -1,5 +1,7 @@
 from flask_smorest import Blueprint, abort
 
+from flask_jwt_extended import get_jwt
+
 from flask_jwt_extended import jwt_required
 
 from flask.views import MethodView
@@ -26,6 +28,10 @@ class Task(MethodView):
     
     @jwt_required()
     def delete(self, task_id):
+        jwt = get_jwt()
+        if not jwt.get("is_admin"):
+            abort(401, message="Admin privilege required!")
+
         task = TaskModel.query.get_or_404(task_id)
         db.session.delete(task)
         db.session.commit()
