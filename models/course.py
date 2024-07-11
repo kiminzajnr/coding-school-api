@@ -8,3 +8,4 @@ class CourseModel(db.Model):
     name = db.Column(db.String(1000), unique=True, nullable=False)
 
     projects = db.relationship("ProjectModel", back_populates="course", lazy="dynamic", cascade="all, delete")
+    tags = db.relationship("TagModel", back_populates="course", lazy="dynamic")
