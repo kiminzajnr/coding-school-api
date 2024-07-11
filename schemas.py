@@ -1,6 +1,10 @@
 from marshmallow import Schema, fields
 
 
+class PlainTagSchema(Schema):
+    id = fields.Int(dump_only=True)
+    name = fields.Str()
+
 class PlainTaskSchema(Schema):
     id = fields.Str(dump_only=True)
     title = fields.Str(required=True)
@@ -36,8 +40,13 @@ class TaskUpdateSchema(Schema):
 
 class CourseSchema(PlainCourseSchema):
     projects = fields.List(fields.Nested(PlainProjectSchema()), dump_only=True)
+    tags = fields.List(fields.Nested(PlainTagSchema()), dump_only=True)
 
 class UserSchema(Schema):
     id = fields.Int(dump_only=True)
     username = fields.Str(required=True)
     password = fields.Str(required=True, load_only=True)
+
+class TagSchema(PlainTagSchema):
+    course_id = fields.Int(load_only=True)
+    course = fields.Nested(PlainCourseSchema(), dump_only=True)
