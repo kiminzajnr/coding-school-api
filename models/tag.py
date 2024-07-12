@@ -9,3 +9,4 @@ class TagModel(db.Model):
     course_id = db.Column(db.Integer, db.ForeignKey("courses.id"), nullable=False)
 
     course = db.relationship("CourseModel", back_populates="tags")
+    
