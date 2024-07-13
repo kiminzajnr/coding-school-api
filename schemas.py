@@ -23,6 +23,7 @@ class ProjectSchema(PlainProjectSchema):
     course_id = fields.Int(required=True, load_only=True)
     course = fields.Nested(PlainCourseSchema(), dump_only=True)
     tasks = fields.List(fields.Nested(PlainTaskSchema()), dump_only=True)
+    tags = fields.List(fields.Nested(PlainTagSchema()), dump_only=True)
 
 class TaskSchema(PlainTaskSchema):
     project_id = fields.Int(required=True, load_only=True)
@@ -49,4 +50,10 @@ class UserSchema(Schema):
 
 class TagSchema(PlainTagSchema):
     course_id = fields.Int(load_only=True)
+    projects = fields.List(fields.Nested(PlainProjectSchema()), dump_only=True)
     course = fields.Nested(PlainCourseSchema(), dump_only=True)
+
+class TagAndProjectSchema(Schema):
+    message = fields.Str()
+    project = fields.Nested(ProjectSchema)
+    tag = fields.Nested(TagSchema)
