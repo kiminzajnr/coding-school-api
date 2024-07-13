@@ -14,3 +14,5 @@ class ProjectModel(db.Model):
     course = db.relationship("CourseModel", back_populates="projects")
 
     tasks = db.relationship("TaskModel", back_populates="project", lazy="dynamic", cascade="all, delete")
+
+    tags = db.relationship("TagModel", back_populates="projects", secondary="projects_tags")
