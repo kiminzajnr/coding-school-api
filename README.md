@@ -110,5 +110,6 @@ Authorization: Bearer <your-token>
 This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
 
 ## References
+- [Flask Documentation](https://flask.palletsprojects.com/en/3.0.x/)
 - [flask-smorest](https://flask-smorest.readthedocs.io/en/latest/index.html)
 - [Swagger Documentation](https://swagger.io/tools/swagger-ui)
