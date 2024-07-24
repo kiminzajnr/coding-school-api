@@ -103,8 +103,9 @@ This project is an API for a coding school designed to manage courses, projects,
 
 ## Authentication
 This API uses JWT for authentication. To access protected routes, you need to include a valid token in the `Authorization` header:
-```bash
+```
 Authorization: Bearer <your-token>
+```
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
