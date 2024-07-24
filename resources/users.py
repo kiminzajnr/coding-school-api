@@ -12,7 +12,7 @@ from flask_jwt_extended import (
 
 from passlib.hash import pbkdf2_sha256
 
-from schemas import UserSchema
+from schemas import UserSchema, UserRegisterSchema
 from models import UserModel
 from db import db
 from blocklist import BLOCKLIST
