@@ -67,7 +67,7 @@ This project is an API for a coding school designed to manage courses, projects,
 Guidelines for contributing to the project.
 
 ## License
-Information about the project's license.
+This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
 
 ## References
 Links to additional resources, documentation, or related projects.
