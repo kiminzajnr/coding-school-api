@@ -20,7 +20,7 @@ This project is an API for a coding school designed to manage courses, projects,
 ### Steps
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/coding-school-api.git
+    git clone https://github.com/kiminzajnr/coding-school-api.git
     cd coding-school-api
     ```
 
