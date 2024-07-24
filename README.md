@@ -63,11 +63,8 @@ This project is an API for a coding school designed to manage courses, projects,
 - Feature 2
 - Feature 3
 
-## Contributing
-Guidelines for contributing to the project.
-
 ## License
 This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
 
 ## References
-Links to additional resources, documentation, or related projects.
+- [flask-smorest](https://flask-smorest.readthedocs.io/en/latest/index.html)
