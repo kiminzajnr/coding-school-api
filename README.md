@@ -8,7 +8,6 @@ This project is an API for a coding school designed to manage courses, projects,
 - [Usage](#usage)
 - [Features](#features)
 - [License](#license)
-- [Authors and Acknowledgements](#authors-and-acknowledgements)
 - [References](#references)
 
 ## Installation
@@ -26,8 +25,8 @@ This project is an API for a coding school designed to manage courses, projects,
 
 2. Create and activate a virtual environment:
     ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    python3 -m venv venv
+    . venv/bin/activate  # On Windows, use `venv\Scripts\activate`
     ```
 
 3. Install the dependencies:
@@ -46,7 +45,6 @@ This project is an API for a coding school designed to manage courses, projects,
     ```bash
     flask run
     ```
-
 
 ## Usage
 Examples and explanations on how to use the project.
