@@ -57,3 +57,6 @@ class TagAndProjectSchema(Schema):
     message = fields.Str()
     project = fields.Nested(ProjectSchema)
     tag = fields.Nested(TagSchema)
+
+class UserRegisterSchema(UserSchema):
+    email = fields.Str(required=True)
