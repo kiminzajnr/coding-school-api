@@ -1,7 +1,7 @@
-# Project Title
+# Coding School RESTful API
 
 ## Description
-A brief description of what the project does and its purpose.
+This project is an API for a coding school designed to manage courses, projects, tasks, tags and  users. It allows for CRUD operations on all entities, supports authentication, and includes detailed documentation for ease of use.
 
 ## Table of Contents
 - [Installation](#installation)
@@ -12,7 +12,41 @@ A brief description of what the project does and its purpose.
 - [References](#references)
 
 ## Installation
-Step-by-step instructions on how to install and set up the project.
+### Prerequisites
+- Python 3.8+
+- pip
+- Virtual environment
+
+### Steps
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/coding-school-api.git
+    cd coding-school-api
+    ```
+
+2. Create and activate a virtual environment:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
+
+3. Install the dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4. Set up the database:
+    ```bash
+    flask db init
+    flask db migrate
+    flask db upgrade
+    ```
+
+5. Run the application:
+    ```bash
+    flask run
+    ```
+
 
 ## Usage
 Examples and explanations on how to use the project.
