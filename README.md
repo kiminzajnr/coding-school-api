@@ -68,3 +68,4 @@ This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file
 
 ## References
 - [flask-smorest](https://flask-smorest.readthedocs.io/en/latest/index.html)
+- [Swagger Documentation](https://swagger.io/tools/swagger-ui)
