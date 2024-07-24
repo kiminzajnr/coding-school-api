@@ -1,6 +1,6 @@
 # Coding School RESTful API
 
-## Description
+## About
 This project is an API for a coding school designed to manage courses, projects, tasks, tags and  users. It allows for CRUD operations on all entities, supports authentication, and includes detailed documentation for ease of use.
 
 ## Table of Contents
@@ -59,9 +59,47 @@ This project is an API for a coding school designed to manage courses, projects,
     ```
 
 ## Features
-- Feature 1
-- Feature 2
-- Feature 3
+- Full CRUD operations for users, courses, projects, tasks, and tags.
+- JWT authentication.
+- Detailed API documentation using Swagger.
+- Error handling and validation.
+
+## Endpoints
+### Users
+- `GET /user/{user_id}`
+- `POST /register`
+- `POST /login`
+- `POST /refresh`
+- `POST /logout`
+- `DELETE /user/{user_id}`
+
+### Courses
+- `GET /courses`
+- `GET /courses/<id>`
+- `POST /courses`
+- `PUT /courses/<id>`
+- `DELETE /courses/<id>`
+
+### Projects
+- `GET /projects`
+- `GET /projects/<id>`
+- `POST /projects`
+- `PUT /projects/<id>`
+- `DELETE /projects/<id>`
+
+### Tasks
+- `GET /tasks`
+- `GET /tasks/<id>`
+- `POST /tasks`
+- `PUT /tasks/<id>`
+- `DELETE /tasks/<id>`
+
+### Tags
+- `GET /tags`
+- `GET /tags/<id>`
+- `POST /tags`
+- `PUT /tags/<id>`
+- `DELETE /tags/<id>`
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
