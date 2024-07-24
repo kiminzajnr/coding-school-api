@@ -47,7 +47,16 @@ This project is an API for a coding school designed to manage courses, projects,
     ```
 
 ## Usage
-Examples and explanations on how to use the project.
+### Examples
+- To create a new user:
+    ```bash
+    curl -X POST http://127.0.0.1:5000/register -d '{"username": "John", "password": "1234", "email": "john@example.com"}' -H "Content-Type: application/json"
+    ```
+
+- To get a list of courses:
+    ```bash
+    curl http://127.0.0.1:5000/course
+    ```
 
 ## Features
 - Feature 1
