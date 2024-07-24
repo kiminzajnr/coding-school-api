@@ -22,9 +22,6 @@ Examples and explanations on how to use the project.
 - Feature 2
 - Feature 3
 
-## Configuration
-Instructions on how to configure the project.
-
 ## Contributing
 Guidelines for contributing to the project.
 
