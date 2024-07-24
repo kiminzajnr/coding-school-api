@@ -7,6 +7,8 @@ This project is an API for a coding school designed to manage courses, projects,
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
+- [Endpoints](#endpoints)
+- [Authentication](#authentication)
 - [License](#license)
 - [References](#references)
 
