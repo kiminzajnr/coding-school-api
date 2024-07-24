@@ -74,32 +74,32 @@ This project is an API for a coding school designed to manage courses, projects,
 - `DELETE /user/{user_id}`
 
 ### Courses
-- `GET /courses`
-- `GET /courses/<id>`
-- `POST /courses`
-- `PUT /courses/<id>`
-- `DELETE /courses/<id>`
+- `GET /course`
+- `GET /course/{course_id}`
+- `POST /course`
+- `DELETE /course/{course_id}`
 
 ### Projects
-- `GET /projects`
-- `GET /projects/<id>`
-- `POST /projects`
-- `PUT /projects/<id>`
-- `DELETE /projects/<id>`
+- `GET /project`
+- `GET /project/{project_id}`
+- `POST /project`
+- `PUT /project/{project_id}`
+- `DELETE /project/{project_id}`
 
 ### Tasks
-- `GET /tasks`
-- `GET /tasks/<id>`
-- `POST /tasks`
-- `PUT /tasks/<id>`
-- `DELETE /tasks/<id>`
+- `GET /task`
+- `GET /task/{task_id}`
+- `POST /task`
+- `PUT /task/{task_id}`
+- `DELETE /task/{task_id}`
 
 ### Tags
-- `GET /tags`
-- `GET /tags/<id>`
-- `POST /tags`
-- `PUT /tags/<id>`
-- `DELETE /tags/<id>`
+- `GET /tag/{tag_id}`
+- `GET /course/{course_id}/tag`
+- `POST /course/{course_id}/tag`
+- `POST /project/{project_id}/tag/{tag_id}`
+- `DELETE /tag/{tag_id}`
+- `DELETE /project/{project_id}/tag/{tag_id}`
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for details.
