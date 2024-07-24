@@ -1,7 +1,7 @@
 # Coding School API
 
 ## About
-This project is an API for a coding school designed to manage courses, projects, tasks, tags and  users. It allows for CRUD operations on all entities, supports authentication, and includes detailed documentation using Flask-Smorest..
+This project is an API for a coding school designed to manage courses, projects, tasks, tags and  users. It allows for CRUD operations on all entities, supports authentication, and includes detailed documentation using Flask-Smorest.
 
 ## Table of Contents
 - [Installation](#installation)
